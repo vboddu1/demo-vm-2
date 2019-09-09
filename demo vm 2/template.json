@@ -7,11 +7,11 @@
             "type": "String"
         },
         "disks_windows_OsDisk_1_e9ba8678f003404a825fab1a369e6af9_externalid": {
-            "defaultValue": "/subscriptions/90a2f185-6456-4b47-a481-9c15ebc254a2/resourceGroups/miracle/providers/Microsoft.Compute/disks/windows_OsDisk_1_e9ba8678f003404a825fab1a369e6af9",
+            "defaultValue": "/subscriptions/4170ffee-a940-479b-988c-50f869a6b94d/resourceGroups/miracle/providers/Microsoft.Compute/disks/windows_OsDisk_1_e9ba8678f003404a825fab1a369e6af9",
             "type": "String"
         },
         "networkInterfaces_windows316_externalid": {
-            "defaultValue": "/subscriptions/90a2f185-6456-4b47-a481-9c15ebc254a2/resourceGroups/miracle/providers/Microsoft.Network/networkInterfaces/windows316",
+            "defaultValue": "/subscriptions/4170ffee-a940-479b-988c-50f869a6b94d/resourceGroups/miracle/providers/Microsoft.Network/networkInterfaces/windows316",
             "type": "String"
         }
     },
@@ -42,7 +42,7 @@
                             "storageAccountType": "StandardSSD_LRS",
                             "id": "[parameters('disks_windows_OsDisk_1_e9ba8678f003404a825fab1a369e6af9_externalid')]"
                         },
-                        "diskSizeGB": 127
+                        "diskSizeGB": 30
                     },
                     "dataDisks": []
                 },
