@@ -1,0 +1,70 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "virtualMachines_windows_name": {
+            "defaultValue": "windows",
+            "type": "String"
+        },
+        "disks_windows_OsDisk_1_e9ba8678f003404a825fab1a369e6af9_externalid": {
+            "defaultValue": "/subscriptions/90a2f185-6456-4b47-a481-9c15ebc254a2/resourceGroups/miracle/providers/Microsoft.Compute/disks/windows_OsDisk_1_e9ba8678f003404a825fab1a369e6af9",
+            "type": "String"
+        },
+        "networkInterfaces_windows316_externalid": {
+            "defaultValue": "/subscriptions/90a2f185-6456-4b47-a481-9c15ebc254a2/resourceGroups/miracle/providers/Microsoft.Network/networkInterfaces/windows316",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Compute/virtualMachines",
+            "apiVersion": "2019-03-01",
+            "name": "[parameters('virtualMachines_windows_name')]",
+            "location": "centralus",
+            "properties": {
+                "hardwareProfile": {
+                    "vmSize": "Standard_D2_v3"
+                },
+                "storageProfile": {
+                    "imageReference": {
+                        "publisher": "MicrosoftWindowsDesktop",
+                        "offer": "Windows-10",
+                        "sku": "rs5-pro",
+                        "version": "latest"
+                    },
+                    "osDisk": {
+                        "osType": "Windows",
+                        "name": "[concat(parameters('virtualMachines_windows_name'), '_OsDisk_1_e9ba8678f003404a825fab1a369e6af9')]",
+                        "createOption": "FromImage",
+                        "caching": "ReadWrite",
+                        "managedDisk": {
+                            "storageAccountType": "StandardSSD_LRS",
+                            "id": "[parameters('disks_windows_OsDisk_1_e9ba8678f003404a825fab1a369e6af9_externalid')]"
+                        },
+                        "diskSizeGB": 127
+                    },
+                    "dataDisks": []
+                },
+                "osProfile": {
+                    "computerName": "[parameters('virtualMachines_windows_name')]",
+                    "adminUsername": "miracle",
+                    "windowsConfiguration": {
+                        "provisionVMAgent": true,
+                        "enableAutomaticUpdates": true
+                    },
+                    "secrets": [],
+                    "allowExtensionOperations": true
+                },
+                "networkProfile": {
+                    "networkInterfaces": [
+                        {
+                            "id": "[parameters('networkInterfaces_windows316_externalid')]"
+                        }
+                    ]
+                },
+                "licenseType": "Windows_Client"
+            }
+        }
+    ]
+}
